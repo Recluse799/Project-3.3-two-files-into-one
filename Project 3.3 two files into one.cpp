@@ -1,9 +1,12 @@
-// Project 3.3 two files into one.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+///************************
+//Immanuel Braxton
+//3 / 29 / 2024
+//Project 3.3 two files into one.cpp
+//This program reads two input files whose lines are ordered by a key data field and merges them into one output file using the same key field
+// .This program will read each input file until completion and the files have been merged successfully in an outfile.
+//*************************
 
 #include <iostream> 
-
-#include <iomanip> //includes manipulators (that take parameters, strings are left justified, numbers are right justified)
 
 #include <string>
 
@@ -32,48 +35,65 @@ int main()
 
         getline(TextFile1, str1);
         getline(TextFile2, str2);
-
+    
+       
         
-
         while (!TextFile1.eof() && !TextFile2.eof())//if data is there, if eof write remaining lines from file
         {
-
+            //cout << str1 << str2 << endl;
 
             if (str1 < str2) //compare the two strings from the files writing the smaller one
             {
-                cout << str1 << endl;
-                getline(TextFile1, str1);
-                if (TextFile1.eof())
-                    cout << str1 << endl;
+                Outfile << str1 << endl;
+                if (!getline(TextFile1, str1));
+
             }
             else
             {
-                cout << str2 << endl;
-                getline(TextFile2, str2);
-                if (TextFile2.eof())
-                    cout << str2 << endl;
+                Outfile << str2 << endl;
+                if (!getline(TextFile2, str2));
+                //cout << str2 << str1 << endl;
+
+
             }
 
+            
+            
+        }
            
+
+        if (str1 < str2) // when at the end of file
+        {
+            Outfile << str1 << endl;
+        }
+        else if (str2 < str1)
+        {
+            Outfile << str2 << endl;
+        }
+        
+        
             
 
             while (TextFile1.eof() || TextFile2.eof())//if data is there, if eof write remaining lines from file
             {
             
                 if (TextFile1.eof())// if file1 is eof write list of file2
-                {                   
-                    cout << str2 << endl;
-                    getline(TextFile2, str2);
+                {
+                    Outfile << str2 << endl;
+                    if (!getline(TextFile2, str2));
+                        
                 }
                 else if (TextFile2.eof())// if file2 is eof write list of file1
                 {                  
-                    getline(TextFile1, str1);
-                    cout << str1 << endl;
+                    Outfile << str1 << endl;
+                    if (!getline(TextFile1, str1));
+                        
+                    
                 }
             }
            
            
-        }
+        
 
                                                                         
 
