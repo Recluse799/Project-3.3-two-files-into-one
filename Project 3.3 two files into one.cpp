@@ -45,13 +45,13 @@ int main()
             if (str1 < str2) //compare the two strings from the files writing the smaller one
             {
                 Outfile << str1 << endl;
-                if (!getline(TextFile1, str1));
+                getline(TextFile1, str1);
 
             }
             else
             {
                 Outfile << str2 << endl;
-                if (!getline(TextFile2, str2));
+                getline(TextFile2, str2);
                 //cout << str2 << str1 << endl;
 
 
@@ -62,40 +62,23 @@ int main()
         }
            
 
-        if (str1 < str2) // when at the end of file
+        while (!TextFile1.eof())// if file1 is eof write list of file2
         {
             Outfile << str1 << endl;
+            getline(TextFile1, str1);
         }
-        else if (str2 < str1)
+
+
+        while (!TextFile2.eof())// if file2 is eof write list of file1
         {
             Outfile << str2 << endl;
+            getline(TextFile2, str2);
+
         }
-        
-        
-            
-
-            while (TextFile1.eof() || TextFile2.eof())//if data is there, if eof write remaining lines from file
-            {
-            
-                if (TextFile1.eof())// if file1 is eof write list of file2
-                {
-                    Outfile << str2 << endl;
-                    if (!getline(TextFile2, str2));
-                        
-                }
-                else if (TextFile2.eof())// if file2 is eof write list of file1
-                {                  
-                    Outfile << str1 << endl;
-                    if (!getline(TextFile1, str1));
-                        
-                    
-                }
-            }
            
            
-        
-
-                                                                        
+           
+                                                                            
 
             TextFile1.close(); ////close infile 
             TextFile2.close(); //close infile 
